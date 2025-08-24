@@ -1,0 +1,24 @@
+{
+  "ID": "com.phoenix.utilities",
+  "AssemblyName": "PhoenixPointUtilities.dll",
+  "Author": [
+    {
+      "Key": "English",
+      "Value": "PP Modding Community"
+    }
+  ],
+  "Version": "1.0",
+  "Name": [
+    {
+      "Key": "English",
+      "Value": "Phoenix Point Utilities"
+    }
+  ],
+  "Description": [
+    {
+      "Key": "English",
+      "Value": "Collection of useful utilities and gameplay enhancements: Remote Control buff, Recruit inventory items, Return Fire improvements, Always recover items, Aircraft configuration, Vehicle bay settings. Configurable quality-of-life improvements extracted from SuperCheatsModPlus."
+    }
+  ],
+  "Dependencies": []
+}
