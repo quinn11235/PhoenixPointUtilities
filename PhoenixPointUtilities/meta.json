@@ -17,7 +17,7 @@
   "Description": [
     {
       "Key": "English",
-      "Value": "Collection of useful utilities and gameplay enhancements: Remote Control buff (1 AP + 1 WP), Recruit inventory settings, Always recover all items from tactical missions, Aircraft configuration (speed, capacity, range), Vehicle bay settings (slots, heal amounts). Quality-of-life improvements extracted from SuperCheatsModPlus with 5 working features."
+      "Value": "Collection of useful utilities and gameplay enhancements: Remote Control buff (1 AP + 1 WP), Recruit inventory settings, Return fire improvements (angle, limit, step-out), Always recover all items from tactical missions, Aircraft configuration (speed, capacity, range), Vehicle space configuration (Armadillo, Scarab, Aspida, Kaos space in aircraft/squad). Quality-of-life improvements extracted from SuperCheatsModPlus with 6 working features."
     }
   ],
   "Dependencies": []

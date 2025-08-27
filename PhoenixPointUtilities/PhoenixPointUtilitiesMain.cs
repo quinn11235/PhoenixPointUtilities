@@ -5,13 +5,13 @@ using PhoenixPoint.Common.Game;
 using PhoenixPoint.Common.Levels.Missions;
 using PhoenixPoint.Geoscape.Entities;
 using PhoenixPoint.Geoscape.Entities.DifficultySystem;
-using PhoenixPoint.Geoscape.Entities.PhoenixBases.FacilityComponents;
 using PhoenixPoint.Modding;
 using PhoenixPoint.Tactical;
 using PhoenixPoint.Tactical.Entities;
 using PhoenixPoint.Tactical.Entities.Abilities;
 using PhoenixPoint.Tactical.Entities.Equipments;
 using PhoenixPoint.Tactical.Entities.Weapons;
+using PhoenixPoint.Tactical.UI;
 using HarmonyLib;
 using System;
 using System.Linq;
@@ -43,7 +43,7 @@ namespace PhoenixPointUtilities
                 ApplyRecruitInventorySettings();
                 ApplyItemRecoverySettings();
                 ApplyAircraftSettings();
-                ApplyVehicleBaySettings();
+                ApplyVehicleSpaceSettings();
             }
             catch (Exception e)
             {
@@ -75,7 +75,7 @@ namespace PhoenixPointUtilities
                 ApplyRecruitInventorySettings();
                 ApplyItemRecoverySettings(); 
                 ApplyAircraftSettings();
-                ApplyVehicleBaySettings();
+                ApplyVehicleSpaceSettings();
                 Logger.LogInfo("Configuration changes applied.");
             }
             catch (Exception e)
@@ -188,24 +188,42 @@ namespace PhoenixPointUtilities
             }
         }
 
-        private void ApplyVehicleBaySettings()
+        private void ApplyVehicleSpaceSettings()
         {
             try
             {
-                VehicleSlotFacilityComponentDef vehicleBaySlotComponent = Repo.GetAllDefs<VehicleSlotFacilityComponentDef>()
-                    .FirstOrDefault(ged => ged.name.Equals("E_Element0 [VehicleBay_PhoenixFacilityDef]"));
-                if (vehicleBaySlotComponent != null)
+                var tacCharacterDefs = Repo.DefRepositoryDef.AllDefs.OfType<TacCharacterDef>()
+                    .Where(d => (d.IsVehicle || d.IsMutog) && d.name.Contains("CharacterTemplateDef"));
+                
+                foreach (TacCharacterDef tcDef in tacCharacterDefs)
                 {
-                    vehicleBaySlotComponent.AircraftSlots = Config.VehicleBayAircraftSlots;
-                    vehicleBaySlotComponent.GroundVehicleSlots = Config.VehicleBayGroundVehicleSlots;
-                    vehicleBaySlotComponent.AircraftHealAmount = Config.VehicleBayAircraftHealAmount;
-                    vehicleBaySlotComponent.VehicleHealAmount = Config.VehicleBayGroundVehicleHealAmount;
-                    Logger.LogInfo("Applied vehicle bay configuration settings");
+                    if (tcDef.name.Contains("Armadillo"))
+                    {
+                        tcDef.Volume = Config.VehicleSpaceArmadillo;
+                        Logger.LogInfo($"Set Armadillo space to {Config.VehicleSpaceArmadillo}");
+                    }
+                    else if (tcDef.name.Contains("Scarab"))
+                    {
+                        tcDef.Volume = Config.VehicleSpaceScarab;
+                        Logger.LogInfo($"Set Scarab space to {Config.VehicleSpaceScarab}");
+                    }
+                    else if (tcDef.name.Contains("Aspida"))
+                    {
+                        tcDef.Volume = Config.VehicleSpaceAspida;
+                        Logger.LogInfo($"Set Aspida space to {Config.VehicleSpaceAspida}");
+                    }
+                    else if (tcDef.name.Contains("Kaos"))
+                    {
+                        tcDef.Volume = Config.VehicleSpaceKaos;
+                        Logger.LogInfo($"Set Kaos space to {Config.VehicleSpaceKaos}");
+                    }
                 }
+                
+                Logger.LogInfo("Applied vehicle space configuration settings");
             }
             catch (Exception e)
             {
-                Logger.LogWarning($"Vehicle bay settings failed: {e.Message}");
+                Logger.LogWarning($"Vehicle space settings failed: {e.Message}");
             }
         }
     }

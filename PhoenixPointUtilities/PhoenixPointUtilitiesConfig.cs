@@ -18,6 +18,19 @@ namespace PhoenixPointUtilities
         [ConfigField(text: "Recruits Can Have Augmentations", description: "Allow recruits to spawn with augmentations")]
         public bool RecruitGenerationCanHaveAugmentations = false;
 
+        // Return Fire Features
+        [ConfigField(text: "Return Fire Angle", description: "Maximum angle in which return fire is possible (degrees, default 120)")]
+        public int ReturnFireAngle = 120;
+        
+        [ConfigField(text: "Return Fire Limit", description: "Limit return fire to X times per round (0 = unlimited, default 1)")]
+        public int ReturnFireLimit = 1;
+        
+        [ConfigField(text: "No Return Fire When Stepping Out", description: "Disable return fire when attacker steps out of cover")]
+        public bool NoReturnFireWhenSteppingOut = false;
+        
+        [ConfigField(text: "Emphasize Return Fire Hint", description: "Enlarge and animate return fire indicators")]
+        public bool EmphasizeReturnFireHint = true;
+
         // Item Recovery Feature
         [ConfigField(text: "Always Recover All Items", description: "Automatically recover all items from tactical missions")]
         public bool AlwaysRecoverAllItemsFromTacticalMissions = true;
@@ -62,17 +75,17 @@ namespace PhoenixPointUtilities
         [ConfigField(text: "Helios Range", description: "Maximum range for Helios")]
         public float AircraftHeliosRange = 2000f;
 
-        // Vehicle Bay Configuration
-        [ConfigField(text: "Aircraft Slots", description: "Number of aircraft slots in vehicle bay")]
-        public int VehicleBayAircraftSlots = 2;
+        // Vehicle Space Configuration
+        [ConfigField(text: "Armadillo Space", description: "Space Armadillo vehicles occupy in aircraft/squad (1-5)")]
+        public int VehicleSpaceArmadillo = 3;
         
-        [ConfigField(text: "Ground Vehicle Slots", description: "Number of ground vehicle slots in vehicle bay")]
-        public int VehicleBayGroundVehicleSlots = 2;
+        [ConfigField(text: "Scarab Space", description: "Space Scarab vehicles occupy in aircraft/squad (1-5)")]
+        public int VehicleSpaceScarab = 3;
         
-        [ConfigField(text: "Aircraft Heal Amount", description: "Aircraft healing amount per hour")]
-        public int VehicleBayAircraftHealAmount = 100;
+        [ConfigField(text: "Aspida Space", description: "Space Aspida vehicles occupy in aircraft/squad (1-5)")]
+        public int VehicleSpaceAspida = 3;
         
-        [ConfigField(text: "Ground Vehicle Heal Amount", description: "Ground vehicle healing amount per hour")]
-        public int VehicleBayGroundVehicleHealAmount = 100;
+        [ConfigField(text: "Kaos Buggy Space", description: "Space Kaos Buggy occupies in aircraft/squad (1-5)")]
+        public int VehicleSpaceKaos = 3;
     }
 }

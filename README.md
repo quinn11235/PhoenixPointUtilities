@@ -24,17 +24,18 @@ A collection of useful utilities and gameplay enhancements extracted from SuperC
 - **Always Recover All Items**: Automatically recover all dropped items from tactical missions
 - Makes scavenging missions less critical but ensures no item loss
 
-### 5. Aircraft Configuration
+### 6. Aircraft Configuration
 - **Speed Settings**: Configure speed for all aircraft types (Tiamat, Thunderbird, Manticore, Helios)
 - **Capacity Settings**: Configure soldier capacity for each aircraft
 - **Range Settings**: Configure maximum range for each aircraft
 - Fully customizable aircraft performance
 
-### 6. Vehicle Bay Enhancement
-- Configure number of aircraft slots (default 2)
-- Configure number of ground vehicle slots (default 2)  
-- Configure heal amounts per hour for aircraft and vehicles
-- Enhanced facility management
+### 7. Vehicle Space Configuration
+- **Armadillo Space**: Configure space Armadillo vehicles occupy in aircraft/squad (1-5, default 3)
+- **Scarab Space**: Configure space Scarab vehicles occupy in aircraft/squad (1-5, default 3)
+- **Aspida Space**: Configure space Aspida vehicles occupy in aircraft/squad (1-5, default 3)
+- **Kaos Buggy Space**: Configure space Kaos Buggy occupies in aircraft/squad (1-5, default 3)
+- Affects squad selection and aircraft capacity calculations
 
 ## Installation
 
