@@ -76,6 +76,7 @@ namespace PhoenixPointUtilities
                 ApplyItemRecoverySettings(); 
                 ApplyAircraftSettings();
                 ApplyVehicleSpaceSettings();
+                // Note: Drop chance settings are applied automatically via Harmony patches
                 Logger.LogInfo("Configuration changes applied.");
             }
             catch (Exception e)

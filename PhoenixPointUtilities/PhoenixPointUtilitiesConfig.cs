@@ -87,5 +87,21 @@ namespace PhoenixPointUtilities
         
         [ConfigField(text: "Kaos Buggy Space", description: "Space Kaos Buggy occupies in aircraft/squad (1-5)")]
         public int VehicleSpaceKaos = 3;
+
+        // Drop Chance Configuration
+        [ConfigField(text: "Item Destruction Chance", description: "Base chance for items to be destroyed when dropped by a dying enemy (0-100%)")]
+        public int ItemDestructionChance = 80;
+
+        [ConfigField(text: "Allow Weapon Drops", description: "Allow weapons to drop from dying enemies")]
+        public bool AllowWeaponDrops = true;
+
+        [ConfigField(text: "Weapon Destruction Chance", description: "Chance for weapons to be destroyed when dropped (0-100%)")]
+        public int WeaponDestructionChance = 60;
+        
+        [ConfigField(text: "Allow Armor Drops", description: "Allow armor to drop from dying enemies")]
+        public bool AllowArmorDrops = true;
+
+        [ConfigField(text: "Armor Destruction Chance", description: "Chance for armor to be destroyed when dropped (0-100%)")]
+        public int ArmorDestructionChance = 70;
     }
 }
