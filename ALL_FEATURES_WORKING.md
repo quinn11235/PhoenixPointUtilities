@@ -38,9 +38,16 @@ You were absolutely right - all those types ARE available in the SDK! The issue 
   - Prevents duplicate armor recovery when drops are enabled
 - **Inspired by**: SuperCheatsModPlus drop system
 
-### **⏳ TODO - Return Fire Changes** 
-- **Status**: Could be added in future (existing ReturnFirePatches.cs provides framework)
-- **Reason**: Requires tactical combat runtime patches
+#### ✅ **7. Return Fire Configuration** - FULLY WORKING
+- **What it does**: Complete control over return fire mechanics in tactical combat
+- **Implementation**: Harmony patches on tactical combat methods
+- **Features**: 
+  - Configure return fire angle (0-360 degrees)
+  - Set return fire limit per actor per turn
+  - Disable return fire when stepping out of cover
+  - Enhanced return fire UI indicators with animation
+  - Special handling for turrets (cannot be flanked, no limits)
+- **Inspired by**: SuperCheatsModPlus return fire system
 
 ---
 
@@ -87,6 +94,6 @@ VehicleSlotFacilityComponentDef VehicleBaySlotComponent = Repo.GetAllDefs<Vehicl
 - **Aircraft** perform exactly as you configure them
 - **Vehicle Bay** works with your custom slot/healing settings
 
-### **6/6 Core Features Fully Working = Complete Utility Mod!**
+### **7/7 Core Features Fully Working = Complete Utility Mod!**
 
 This isn't a framework anymore - it's a **fully functional utility mod** that implements comprehensive game-changing features using battle-tested methods from SuperCheatsModPlus!

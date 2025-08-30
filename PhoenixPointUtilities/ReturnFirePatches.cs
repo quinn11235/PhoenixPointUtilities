@@ -18,14 +18,27 @@ namespace PhoenixPointUtilities
 
         private static bool CanReturnFireFromAngle(TacticalActor shooter, TacticalActorBase target, float reactionAngleCos)
         {
-            Vector3 forward = target.transform.forward;
-            Vector3 toShooter = (shooter.Pos - target.Pos).normalized;
-            float dot = Vector3.Dot(forward, toShooter);
-            return dot >= reactionAngleCos;
+            // Turrets cannot be flanked (same as SuperCheatsModPlus)
+            if (target.IsMetallic)
+            {
+                return true;
+            }
+
+            Vector3 targetForward = target.transform.forward;
+            Vector3 targetToShooter = (shooter.Pos - target.Pos).normalized;
+            float angleCos = Vector3.Dot(targetForward, targetToShooter);
+
+            return angleCos >= reactionAngleCos;
         }
 
         private static bool HasReachedReturnFireLimit(TacticalActor target)
         {
+            // Turrets have no limit (same as SuperCheatsModPlus)
+            if (target.IsMetallic)
+            {
+                return false;
+            }
+
             int returnFireLimit = PhoenixPointUtilitiesMain.Main.Config.ReturnFireLimit;
             if (returnFireLimit <= 0)
                 return false;
@@ -62,18 +75,60 @@ namespace PhoenixPointUtilities
     [HarmonyPatch(typeof(UIStateShoot), "CalculateReturnFirePredictions")]
     public static class UIStateShoot_CalculateReturnFirePredictions_Patch
     {
-        public static bool Prefix()
+        public static bool Prepare()
         {
-            return !PhoenixPointUtilitiesMain.Main.Config.NoReturnFireWhenSteppingOut;
+            return PhoenixPointUtilitiesMain.Main?.Config?.NoReturnFireWhenSteppingOut == true;
+        }
+
+        public static void Prefix(UIStateShoot __instance)
+        {
+            try
+            {
+                if (PhoenixPointUtilitiesMain.Main?.Config?.NoReturnFireWhenSteppingOut == true)
+                {
+                    // Clear any existing return fire predictions when stepping out is disabled
+                    var field = __instance.GetType().GetField("_returnFirePredictions", 
+                        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                    if (field != null)
+                    {
+                        field.SetValue(__instance, new List<object>());
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                PhoenixPointUtilitiesMain.Main?.Logger?.LogWarning($"Return fire UI patch error: {e.Message}");
+            }
         }
     }
 
     [HarmonyPatch(typeof(UIStateAbilitySelected), "CalculateReturnFirePredictions")]
     public static class UIStateAbilitySelected_CalculateReturnFirePredictions_Patch
     {
-        public static bool Prefix()
+        public static bool Prepare()
         {
-            return !PhoenixPointUtilitiesMain.Main.Config.NoReturnFireWhenSteppingOut;
+            return PhoenixPointUtilitiesMain.Main?.Config?.NoReturnFireWhenSteppingOut == true;
+        }
+
+        public static void Prefix(UIStateAbilitySelected __instance)
+        {
+            try
+            {
+                if (PhoenixPointUtilitiesMain.Main?.Config?.NoReturnFireWhenSteppingOut == true)
+                {
+                    // Clear any existing return fire predictions when stepping out is disabled
+                    var field = __instance.GetType().GetField("_returnFirePredictions", 
+                        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                    if (field != null)
+                    {
+                        field.SetValue(__instance, new List<object>());
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                PhoenixPointUtilitiesMain.Main?.Logger?.LogWarning($"Return fire UI patch error: {e.Message}");
+            }
         }
     }
 
