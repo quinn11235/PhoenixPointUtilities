@@ -44,6 +44,7 @@ namespace PhoenixPointUtilities
                 ApplyItemRecoverySettings();
                 ApplyAircraftSettings();
                 ApplyVehicleSpaceSettings();
+                LogDropChanceSettings();
             }
             catch (Exception e)
             {
@@ -76,6 +77,7 @@ namespace PhoenixPointUtilities
                 ApplyItemRecoverySettings(); 
                 ApplyAircraftSettings();
                 ApplyVehicleSpaceSettings();
+                LogDropChanceSettings();
                 // Note: Drop chance settings are applied automatically via Harmony patches
                 Logger.LogInfo("Configuration changes applied.");
             }
@@ -196,35 +198,51 @@ namespace PhoenixPointUtilities
                 var tacCharacterDefs = Repo.DefRepositoryDef.AllDefs.OfType<TacCharacterDef>()
                     .Where(d => (d.IsVehicle || d.IsMutog) && d.name.Contains("CharacterTemplateDef"));
                 
+                int armadilloCount = 0, scarabCount = 0, aspidaCount = 0, kaosCount = 0;
+                
                 foreach (TacCharacterDef tcDef in tacCharacterDefs)
                 {
                     if (tcDef.name.Contains("Armadillo"))
                     {
                         tcDef.Volume = Config.VehicleSpaceArmadillo;
-                        Logger.LogInfo($"Set Armadillo space to {Config.VehicleSpaceArmadillo}");
+                        armadilloCount++;
                     }
                     else if (tcDef.name.Contains("Scarab"))
                     {
                         tcDef.Volume = Config.VehicleSpaceScarab;
-                        Logger.LogInfo($"Set Scarab space to {Config.VehicleSpaceScarab}");
+                        scarabCount++;
                     }
                     else if (tcDef.name.Contains("Aspida"))
                     {
                         tcDef.Volume = Config.VehicleSpaceAspida;
-                        Logger.LogInfo($"Set Aspida space to {Config.VehicleSpaceAspida}");
+                        aspidaCount++;
                     }
                     else if (tcDef.name.Contains("Kaos"))
                     {
                         tcDef.Volume = Config.VehicleSpaceKaos;
-                        Logger.LogInfo($"Set Kaos space to {Config.VehicleSpaceKaos}");
+                        kaosCount++;
                     }
                 }
                 
-                Logger.LogInfo("Applied vehicle space configuration settings");
+                Logger.LogInfo($"[Vehicles] Armadillo({armadilloCount})→{Config.VehicleSpaceArmadillo}, Scarab({scarabCount})→{Config.VehicleSpaceScarab}, Aspida({aspidaCount})→{Config.VehicleSpaceAspida}, Kaos({kaosCount})→{Config.VehicleSpaceKaos}");
             }
             catch (Exception e)
             {
                 Logger.LogWarning($"Vehicle space settings failed: {e.Message}");
+            }
+        }
+
+        private void LogDropChanceSettings()
+        {
+            try
+            {
+                Logger.LogInfo($"[DropSystem] Weapons: {(Config.AllowWeaponDrops ? $"{Config.WeaponDestructionChance}% destruction" : "disabled")}");
+                Logger.LogInfo($"[DropSystem] Armor: {(Config.AllowArmorDrops ? $"{Config.ArmorDestructionChance}% destruction" : "disabled")}"); 
+                Logger.LogInfo($"[DropSystem] Items: {Config.ItemDestructionChance}% destruction");
+            }
+            catch (Exception e)
+            {
+                Logger.LogWarning($"Drop chance logging failed: {e.Message}");
             }
         }
     }

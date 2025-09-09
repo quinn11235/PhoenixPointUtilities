@@ -128,7 +128,7 @@ namespace PhoenixPointUtilities
 
                 if (droppedCount > 0)
                 {
-                    PhoenixPointUtilitiesMain.Main.Logger.LogInfo($"Dropped {droppedCount} armor pieces from {actor.DisplayName}");
+                    PhoenixPointUtilitiesMain.Main.Logger.LogInfo($"[ArmorDrop] {actor.DisplayName}: {droppedCount} pieces dropped");
                 }
             }
             catch (Exception e)

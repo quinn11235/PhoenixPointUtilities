@@ -23,57 +23,57 @@ namespace PhoenixPointUtilities
         public int ReturnFireAngle = 120;
         
         [ConfigField(text: "Return Fire Limit", description: "Limit return fire to X times per round (0 = unlimited, default 1)")]
-        public int ReturnFireLimit = 1;
+        public int ReturnFireLimit = 2;
         
         [ConfigField(text: "No Return Fire When Stepping Out", description: "Disable return fire when attacker steps out of cover")]
-        public bool NoReturnFireWhenSteppingOut = false;
+        public bool NoReturnFireWhenSteppingOut = true;
         
         [ConfigField(text: "Emphasize Return Fire Hint", description: "Enlarge and animate return fire indicators")]
         public bool EmphasizeReturnFireHint = true;
 
         // Item Recovery Feature
         [ConfigField(text: "Always Recover All Items", description: "Automatically recover all items from tactical missions")]
-        public bool AlwaysRecoverAllItemsFromTacticalMissions = true;
+        public bool AlwaysRecoverAllItemsFromTacticalMissions = false;
 
         // Aircraft Configuration - Tiamat (Blimp)
         [ConfigField(text: "Tiamat Speed", description: "Aircraft speed for Tiamat")]
-        public float AircraftBlimpSpeed = 500f;
+        public float AircraftBlimpSpeed = 250f;
         
         [ConfigField(text: "Tiamat Capacity", description: "Soldier capacity for Tiamat")]
         public int AircraftBlimpSpace = 8;
         
         [ConfigField(text: "Tiamat Range", description: "Maximum range for Tiamat")]
-        public float AircraftBlimpRange = 3000f;
+        public float AircraftBlimpRange = 4000f;
 
         // Aircraft Configuration - Thunderbird
         [ConfigField(text: "Thunderbird Speed", description: "Aircraft speed for Thunderbird")]
-        public float AircraftThunderbirdSpeed = 700f;
+        public float AircraftThunderbirdSpeed = 380f;
         
         [ConfigField(text: "Thunderbird Capacity", description: "Soldier capacity for Thunderbird")]
-        public int AircraftThunderbirdSpace = 6;
+        public int AircraftThunderbirdSpace = 7;
         
         [ConfigField(text: "Thunderbird Range", description: "Maximum range for Thunderbird")]
-        public float AircraftThunderbirdRange = 2500f;
+        public float AircraftThunderbirdRange = 3000f;
 
         // Aircraft Configuration - Manticore
         [ConfigField(text: "Manticore Speed", description: "Aircraft speed for Manticore")]
-        public float AircraftManticoreSpeed = 600f;
+        public float AircraftManticoreSpeed = 500f;
         
         [ConfigField(text: "Manticore Capacity", description: "Soldier capacity for Manticore")]
-        public int AircraftManticoreSpace = 8;
+        public int AircraftManticoreSpace = 6;
         
         [ConfigField(text: "Manticore Range", description: "Maximum range for Manticore")]
-        public float AircraftManticoreRange = 4000f;
+        public float AircraftManticoreRange = 2500f;
 
         // Aircraft Configuration - Helios
         [ConfigField(text: "Helios Speed", description: "Aircraft speed for Helios")]
-        public float AircraftHeliosSpeed = 800f;
+        public float AircraftHeliosSpeed = 650f;
         
         [ConfigField(text: "Helios Capacity", description: "Soldier capacity for Helios")]
-        public int AircraftHeliosSpace = 4;
+        public int AircraftHeliosSpace = 5;
         
         [ConfigField(text: "Helios Range", description: "Maximum range for Helios")]
-        public float AircraftHeliosRange = 2000f;
+        public float AircraftHeliosRange = 3500f;
 
         // Vehicle Space Configuration
         [ConfigField(text: "Armadillo Space", description: "Space Armadillo vehicles occupy in aircraft/squad (1-5)")]
@@ -83,10 +83,10 @@ namespace PhoenixPointUtilities
         public int VehicleSpaceScarab = 3;
         
         [ConfigField(text: "Aspida Space", description: "Space Aspida vehicles occupy in aircraft/squad (1-5)")]
-        public int VehicleSpaceAspida = 3;
+        public int VehicleSpaceAspida = 2;
         
         [ConfigField(text: "Kaos Buggy Space", description: "Space Kaos Buggy occupies in aircraft/squad (1-5)")]
-        public int VehicleSpaceKaos = 3;
+        public int VehicleSpaceKaos = 2;
 
         // Drop Chance Configuration
         [ConfigField(text: "Item Destruction Chance", description: "Base chance for items to be destroyed when dropped by a dying enemy (0-100%)")]
@@ -102,6 +102,6 @@ namespace PhoenixPointUtilities
         public bool AllowArmorDrops = true;
 
         [ConfigField(text: "Armor Destruction Chance", description: "Chance for armor to be destroyed when dropped (0-100%)")]
-        public int ArmorDestructionChance = 70;
+        public int ArmorDestructionChance = 60;
     }
 }
